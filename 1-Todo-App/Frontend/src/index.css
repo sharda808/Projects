@@ -1,0 +1,16 @@
+
+* {
+font-size: 20px;
+}
+.button {
+min-width: 90px;
+}
+.kg-row {
+  margin-bottom:10px;
+  text-align:start;
+
+}
+.heading {
+  font-weight: 700;
+  font-size: 45px;
+}
