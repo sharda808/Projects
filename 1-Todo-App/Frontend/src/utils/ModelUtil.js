@@ -1,4 +1,4 @@
-export const todoItemClientModel = (serverItem) => {
+export const todoItemToClientModel = (serverItem) => {
 return {
   id:serverItem.id,
   todoText:serverItem.task,

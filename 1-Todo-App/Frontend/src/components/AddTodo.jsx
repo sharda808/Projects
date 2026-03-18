@@ -2,7 +2,7 @@ import { useRef } from "react";
 import Button from "./Button";
 import { useContext } from "react";
 import { TodoItemsContext } from "../store/TodoItemsContext";
-import { todoItemClientModel } from "../utils/ModelUtil";
+import { todoItemToClientModel } from "../utils/ModelUtil";
 
 const AddTodo = () => {
   const todoTextInput = useRef();
@@ -13,7 +13,7 @@ const {addTodoItem} = useContext(TodoItemsContext);
     const todoDate = todoDateInput.current.value;
     todoTextInput.current.value = '';
     todoDateInput.current.value = '';
-    fetch("http://localhost:5000/todos",{
+    fetch("http://localhost:3000/todos",{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
@@ -24,7 +24,7 @@ const {addTodoItem} = useContext(TodoItemsContext);
       })
     }).then(res => res.json())
     .then(serverItem => {
-      const { id,todoText,todoDate} = todoItemClientModel(serverItem);
+      const { id,todoText,todoDate} = todoItemToClientModel(serverItem);
     
    addTodoItem(id,todoText,todoDate)
     })
