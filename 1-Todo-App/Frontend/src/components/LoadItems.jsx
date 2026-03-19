@@ -13,6 +13,7 @@ const LoadItems = () => {
     fetch("http://localhost:3000/todos")
       .then((res) => res.json())
       .then((items) => {
+        
         const newItems = items.map(todoItemToClientModel);
         addAllTodoItems(newItems);
       })

@@ -8,3 +8,22 @@ res.json(item);
 res.status(500).json({message:err});
 }
 }
+exports.getTodoItems = async(req,res,next) => {
+  try {
+    const items = await TodoItem.find();
+    res.json(items);
+  }catch(err){
+    res.status(500).json({message:err});
+  }
+}
+exports.deleteTodoItem = async(req,res,next) => {
+try{
+const id = req.params.id;
+const deleteItem  = await TodoItem.findByIdAndDelete(id);
+console.log(deleteItem);
+res.json(deleteItem);
+}
+catch(err){
+res.status(500).json({message:err});
+}
+}
