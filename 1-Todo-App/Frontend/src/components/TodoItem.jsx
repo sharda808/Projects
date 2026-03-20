@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Button from "./Button";
 import { TodoItemsContext } from "../store/TodoItemsContext";
-
+import { todoItemToClientModel } from "../utils/ModelUtil";
 const TodoItem = ({id,todoText, todoDate,}) => {
  
  const {deleteTodoItem} = useContext(TodoItemsContext);
@@ -17,8 +17,9 @@ const TodoItem = ({id,todoText, todoDate,}) => {
 
   })
   .then(res => res.json())
-  .then(data => {
-   deleteTodoItem(data.id);
+  .then(deleteItem => {
+    const clientDeletedItem = todoItemToClientModel(deleteItem);
+  deleteTodoItem(clientDeletedItem.id);
   })
   .catch(err => {
     console.log(err);
