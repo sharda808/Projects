@@ -20,7 +20,7 @@ exports.deleteTodoItem = async(req,res,next) => {
 try{
 const id = req.params.id;
 const deleteItem  = await TodoItem.findByIdAndDelete(id);
-console.log(deleteItem);
+
 res.json(deleteItem);
 }
 catch(err){

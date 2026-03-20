@@ -1,16 +1,25 @@
+@import "tailwindcss";
 
-* {
-font-size: 20px;
+@layer base {
+  body {
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
-.button {
-min-width: 90px;
-}
-.kg-row {
-  margin-bottom:10px;
-  text-align:start;
 
-}
-.heading {
-  font-weight: 700;
-  font-size: 45px;
+@layer utilities {
+  @keyframes fade-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-slide-up {
+    animation: fade-slide-up 0.4s ease-out both;
+  }
 }
