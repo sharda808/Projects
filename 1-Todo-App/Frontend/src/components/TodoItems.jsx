@@ -23,6 +23,7 @@ const TodoItems = () => {
               id={item.id}
               todoText={item.todoText}
               todoDate={item.todoDate}
+              completed = {item.completed}
             />
           </div>
         ))}

@@ -27,3 +27,14 @@ catch(err){
 res.status(500).json({message:err});
 }
 }
+exports.updateTodoItem = async(req,res,next) => {
+  try {
+const id = req.params.id;
+console.log(req.body);
+const updatedItem = await TodoItem.findByIdAndUpdate(id,  {completed:req.body.completed},{ new: true });
+res.json(updatedItem);
+  }
+  catch(err){
+res.status(500).json({message:err})
+  }
+}
