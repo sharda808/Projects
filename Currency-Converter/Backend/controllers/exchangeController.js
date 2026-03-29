@@ -1,7 +1,9 @@
+const exchangeRateService = require("../service/exchangeRateService")
 exports.convertCurrency = (req,res,next) => {
-  const {amount,sourceCurrency,targetcurrency} = req.body;
-  if(!amount ||! sourceCurrency || !targetcurrency){
-    return res.status(400).json({message:"Required fields are missing"})
+  const {amount,sourceCurrency,targetCurrency} = req.body;
+  if(!amount ||! sourceCurrency || !targetCurrency){
+    return res.status(400).json({ status:'failed', message:"Required fields are missing"})
   }
-res.json({status:'success', targetAmount:50})
+  const targetAmount = exchangeRateService.convert(amount, sourceCurrency, targetCurrency);
+res.json({status:'success', targetAmount})
 }

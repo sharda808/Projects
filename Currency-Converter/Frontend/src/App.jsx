@@ -4,8 +4,8 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="py-8">
-        {/* <CurrencyConverter /> */}
-        <h1>This is currency converter APP</h1>
+      
+        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Currency Exchange</h1>
       </div>
     </div>
   );
