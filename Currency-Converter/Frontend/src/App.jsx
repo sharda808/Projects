@@ -1,3 +1,4 @@
+import CurrencyConverter from "./conponents/CurrencyConverter";
 
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
       <div className="py-8">
       
         <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">Currency Exchange</h1>
+        <CurrencyConverter />
       </div>
     </div>
   );
