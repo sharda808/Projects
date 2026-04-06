@@ -1,0 +1,45 @@
+import { Link } from "react-router-dom";
+
+const NavBar = () => {
+  return (
+    <nav className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/80 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <div className="flex items-center gap-8">
+          <Link
+            to="/"
+            className="text-2xl font-extrabold tracking-tight text-slate-900 transition hover:text-indigo-600"
+          >
+            Complete Bazaar
+          </Link>
+
+          <div className="flex items-center gap-4 text-sm font-medium text-slate-700">
+            
+            <Link
+              to="/add-product"
+              className="rounded-full bg-indigo-600 px-4 py-2 text-white shadow-sm transition hover:bg-indigo-500"
+            >
+              Add Product
+            </Link>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 text-sm font-semibold">
+          <Link
+            to="/login"
+            className="rounded-full border border-slate-300 px-4 py-2 text-slate-700 transition hover:border-slate-400 hover:text-slate-900"
+          >
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="rounded-full bg-slate-900 px-4 py-2 text-white transition hover:bg-slate-800"
+          >
+            Signup
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default NavBar;
