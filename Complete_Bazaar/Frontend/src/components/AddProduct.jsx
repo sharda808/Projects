@@ -10,16 +10,20 @@ const AddProduct = () => {
   const imageRef = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      nameRef.current.value,
-      brandRef.current.value,
-      priceRef.current.value,
-      categoryRef.current.value,
-      ratingRef.current.value,
-      imageRef.current.value
-    );
-  };
-
+    const formData = new FormData();
+    formData.append('name' , nameRef.current.value)
+        formData.append('name' , nameRef.current.value)
+        formData.append('brand' , brandRef.current.value)
+         formData.append('price' , priceRef.current.value)
+           formData.append('description' , descriptionRef.current.value)
+          formData.append('category' , categoryRef.current.value)
+              formData.append('rating' , ratingRef.current.value)
+                  formData.append('image' , imageRef.current.files[0])     
+fetch("http://localhost:3000/api/seller/products",{
+  method:"POST",
+  body: formData,
+  });
+  }
   const inputStyle =
     "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200";
 
@@ -35,7 +39,7 @@ const AddProduct = () => {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5" encType="multipart/form-data">
           <div className="grid gap-5 md:grid-cols-2">
             <div className="space-y-2">
               <label className="text-sm font-semibold text-slate-700">
@@ -131,4 +135,4 @@ const AddProduct = () => {
   );
 };
 
-export default AddProduct;
+export default AddProduct; 
