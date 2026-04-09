@@ -1,6 +1,7 @@
 import { useRef } from "react";
-
+import { useNavigate } from "react-router-dom";
 const AddProduct = () => {
+  const navigate = useNavigate();
   const nameRef = useRef();
   const brandRef = useRef();
   const priceRef = useRef();
@@ -12,16 +13,20 @@ const AddProduct = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('name' , nameRef.current.value)
-        formData.append('name' , nameRef.current.value)
-        formData.append('brand' , brandRef.current.value)
-         formData.append('price' , priceRef.current.value)
+      formData.append('brand', brandRef.current.value); 
+       formData.append('price', Number(priceRef.current.value));
            formData.append('description' , descriptionRef.current.value)
           formData.append('category' , categoryRef.current.value)
-              formData.append('rating' , ratingRef.current.value)
-                  formData.append('image' , imageRef.current.files[0])     
+           formData.append('rating', Number(ratingRef.current.value));
+                  formData.append('image', imageRef.current.files[0]);     
 fetch("http://localhost:3000/api/seller/products",{
   method:"POST",
   body: formData,
+  })
+  .then(res =>res.json())
+  .then(data => {
+    console.log(data);
+    navigate("/");
   });
   }
   const inputStyle =
