@@ -7,11 +7,12 @@ const bodyParser = require("body-parser");
 const errorController = require("./controllers/errorController");
 const cors = require("cors");
 const sellerRouter = require('./routers/sellerRouter');
+const authRouter = require('./routers/authRouter');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
-
+app.use('/api/auth', authRouter);
 app.use('/api/seller',sellerRouter);
 app.use(errorController.get404);
 
