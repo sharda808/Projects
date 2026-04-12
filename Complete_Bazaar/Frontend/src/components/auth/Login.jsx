@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import{useNavigate} from 'react-router-dom'
 import ErrorMessages from "../common/ErrorMessages";
+import { useDispatch } from "react-redux";
+import { login } from "../../store/slices/authSlices";
 const Login = () => {
 const [errorMessages, setErrorMessages] = useState([])
 
@@ -8,10 +10,11 @@ const [errorMessages, setErrorMessages] = useState([])
   const passwordRef = useRef();
 
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
+  const dispatch = useDispatch();
+  const handleSubmit = async (e) => {
 e.preventDefault();
 setErrorMessages([]);
-fetch("http://localhost:3000/api/auth/login",{
+const res = await fetch("http://localhost:3000/api/auth/login",{
   method:"POST",
   headers:{
     "Content-Type": "application/json",
@@ -22,20 +25,21 @@ fetch("http://localhost:3000/api/auth/login",{
     password:passwordRef.current.value,
 
   })
-  })
-  .then(res =>{
+  });
+  const data = await res.json();
+
 if(res.status === 200){
+dispatch(login(data));
+  console.log(data);
+  localStorage.setItem("token", data.token);
+  localStorage.setItem("userType", data.userType);
    navigate("/");
   } 
     else if(res.status === 401){
-    
-      return res.json();
-    }
-  })
- .then(({errorMessages}) => setErrorMessages(errorMessages))
-    .catch(error => setErrorMessages([error.message]));
+    setErrorMessages(data.errorMessages)
+   
   }
-  
+} 
   return (
 <div className="max-w-md mx-auto p-6">
     <h1 className="text-3xl font-bold text-gray-900 mb-8">Log In</h1>

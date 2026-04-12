@@ -31,7 +31,7 @@ fetch("http://localhost:3000/api/auth/signup",{
 if(res.status === 201){
    navigate("/login");
   } 
-    else if(res.status === 422){
+    else{
           return res.json();
     }
   })

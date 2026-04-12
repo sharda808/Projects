@@ -2,6 +2,7 @@ const { validationResult } = require("express-validator");
 const User = require("../models/User");
 const { firstNameValidator, lastNameValidator, emailValidator, passwordValidator, confirmPasswordValidator, userTypeValidator } = require("./validation");
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
 exports.signup = [
   firstNameValidator,
   lastNameValidator,
@@ -43,7 +44,12 @@ exports.login = async (req,res,next) => {
     if(!isPasswordCorrect){
       return res.status(401).json({errorMessages:["Invalid email or password"]});
     }
-    res.status(200).json({message:"Login successful"});
+    const token = jwt.sign(
+      {userId: user._id,userType: user.userType},
+    process.env.JWT_SECRET,
+    {expiresIn:"1h"}
+    );
+    res.status(200).json({token , userType: user.userType});
   }catch(error){
     res.status(500).json({errorMessages:[error.message]});
   }

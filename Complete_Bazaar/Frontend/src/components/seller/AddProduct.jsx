@@ -1,7 +1,9 @@
 import { useRef } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const AddProduct = () => {
   const navigate = useNavigate();
+    const {token} = useSelector(state =>state.auth);
   const nameRef = useRef();
   const brandRef = useRef();
   const priceRef = useRef();
@@ -11,6 +13,7 @@ const AddProduct = () => {
   const imageRef = useRef();
   const handleSubmit = (e) => {
     e.preventDefault();
+  
     const formData = new FormData();
     formData.append('name' , nameRef.current.value)
       formData.append('brand', brandRef.current.value); 
@@ -22,6 +25,9 @@ const AddProduct = () => {
 fetch("http://localhost:3000/api/seller/products",{
   method:"POST",
   body: formData,
+  headers:{
+    Authorization:`Bearer ${token}`,
+  },
   })
   .then(res =>res.json())
   .then(data => {

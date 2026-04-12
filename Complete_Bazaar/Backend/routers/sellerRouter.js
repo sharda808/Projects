@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require('multer');
 
 const sellerController = require("../controllers/sellerController");
+const { isSeller, isLoggedIn } = require("../middleware/auth");
 const sellerRouter = express.Router();
 
 const storage = multer.diskStorage({
@@ -13,6 +14,7 @@ const storage = multer.diskStorage({
   },
 });
 
-sellerRouter.post("/products", multer({storage: storage}).single('image'), sellerController.createProduct);
+sellerRouter.post("/products", isLoggedIn, isSeller, multer({storage: storage}).single('image'), sellerController.createProduct);
+
 
 module.exports = sellerRouter;

@@ -8,9 +8,10 @@ const productSchema = new mongoose.Schema ({
   category:{type: String, required: true},
   rating :{type:Number, required: true},
   createAt:{type: Date, default: Date.now},
-  // seller :{
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref:'User',
-  // }
+  seller :{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'User',
+    required:true,
+  }
 });
 module.exports = mongoose.model ("Product", productSchema);
