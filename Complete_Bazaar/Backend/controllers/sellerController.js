@@ -15,3 +15,9 @@ exports.createProduct = async (req,res,next) => {
   res.status(500).json({message: error.message})
 }
 };
+exports.getProducts = async(req,res,next) => {
+const sellerId = req.userId;
+const products = await Product.find({seller: sellerId});
+res.status(200).json(products);
+
+}

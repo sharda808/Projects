@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 exports.isLoggedIn = (req,res,next) => {
   const token = req.headers.authorization?.split(' ')[1];
   if(!token){
@@ -10,7 +11,7 @@ exports.isLoggedIn = (req,res,next) => {
     next();
   }
  catch(error){
-  return res.status(401).json({error:'Unauthorized'});
+  return res.status(401).json({error:'error.message'});
  }
 } 
 exports.isSeller = (req,res,next) => {

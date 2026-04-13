@@ -8,12 +8,13 @@ const errorController = require("./controllers/errorController");
 const cors = require("cors");
 const sellerRouter = require('./routers/sellerRouter');
 const authRouter = require('./routers/authRouter');
+const { isLoggedIn, isSeller } = require('./middleware/auth');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRouter);
-app.use('/api/seller',sellerRouter);
+app.use('/api/seller', isLoggedIn, isSeller,sellerRouter);
 app.use(errorController.get404);
 
 const MONGO_DB_URL = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASSWORD}@airbnb.s8zku2p.mongodb.net/${process.env.MONGO_DB_DATABASE}?appName=Airbnb`;
