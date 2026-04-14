@@ -7,7 +7,7 @@ const productSchema = new mongoose.Schema ({
   imageUrl: {type: String, required: true},
   category:{type: String, required: true},
   rating :{type:Number, required: true},
-  createAt:{type: Date, default: Date.now},
+  createdAt:{type: Date, default: Date.now},
   seller :{
     type: mongoose.Schema.Types.ObjectId,
     ref:'User',

@@ -5,5 +5,6 @@ lastName:{type:String, required: true},
   email: {type: String, required: true, unique:true},
   password:{type: String, required: true},
   userType:{type:String, required: true, enum:['customer', 'seller']},
+  cart:[{type: mongoose.Schema.Types.ObjectId, ref:'Product', default:[]}]
 });
 module.exports = mongoose.model("User", userSchema);

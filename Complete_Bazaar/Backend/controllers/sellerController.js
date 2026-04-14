@@ -21,3 +21,8 @@ const products = await Product.find({seller: sellerId});
 res.status(200).json(products);
 
 }
+exports.deleteProduct = async(req,res,next) => {
+  const productId = req.params.id;
+  await Product.findByIdAndDelete(productId);
+  res.status(200).json({productId});
+}

@@ -11,6 +11,7 @@ const authRouter = require('./routers/authRouter');
 const { isLoggedIn, isSeller } = require('./middleware/auth');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads'))
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRouter);
