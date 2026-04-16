@@ -33,9 +33,15 @@ const NavBar = () => {
             
             <Link
               to="/cart"
-              className="rounded-full bg-green-600 px-4 py-2 text-white shadow-sm transition hover:bg-indigo-500"
+              className="rounded-full bg-white px-4 py-2 text-gray-900 shadow-sm transition hover:bg-gray-500"
             >
-             Cart
+              🛒Cart
+            </Link>
+              <Link
+              to="/oredrs"
+              className="rounded-full bg-white px-4 py-2 text-gray-900 shadow-sm transition hover:bg-gray-500"
+            >
+              🛍️Orders
             </Link>
           </div>}
         </div>

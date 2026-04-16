@@ -5,7 +5,11 @@ import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import { useSelector } from "react-redux";
 import SellerHome from "./components/seller/sellerHome";
-import CustomerHome from "./components/common/customer/CustomerHome";
+import CustomerHome from "./components/customer/CustomerHome";
+
+import Order from "./components/customer/Order";
+import CartProduct from "./components/customer/cart/CartProduct";
+import Cart from "./components/customer/cart/Cart";
 
 function App () {
   const {userType} = useSelector((state) => state.auth);
@@ -16,9 +20,12 @@ function App () {
 <NavBar />
 <Routes>
 <Route path = "/" element= {userType === 'seller' ? <SellerHome /> : <CustomerHome />} />
-<Route path = "/add-product" element= {<div><AddProduct /></div>} />
+ <Route path="/add-product" element={<AddProduct />} /> 
 <Route path = "/login" element= {<Login />} />
+
 <Route path = "/signup" element= {<Signup />} />
+<Route path = "/cart" element= {<Cart />} />
+<Route path = "/orders" element= {<Order />} />
 </Routes>
 
 </div>
