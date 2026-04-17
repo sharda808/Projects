@@ -59,6 +59,50 @@ async (productId) => {
 }
 
 );
+export const placeOrder = createAsyncThunk('customer/placeOrder',
+async () => {
+ const token = localStorage.getItem("token");
+ const response = await fetch('http://localhost:3000/api/customer/order',{
+  method:"POST",
+  headers:{
+    Authorization:`Bearer ${token}`
+  }
+ });
+ const body = await response.json();
+ if(response.status === 200){
+  return body;
+ } else{
+  throw new Error(body.error);
+ }
+}
+
+);
+// export const placeOrder = createAsyncThunk(
+//   "customer/placeOrder",
+//   async (orderData) => {
+//     const token = localStorage.getItem("token");
+
+//     const response = await fetch(
+//       "http://localhost:3000/api/customer/order",
+//       {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer ${token}`
+//         },
+//         body: JSON.stringify(orderData) // ✅ REQUIRED
+//       }
+//     );
+
+//     const body = await response.json();
+
+//     if (!response.ok) {
+//       throw new Error(body.error);
+//     }
+
+//     return body;
+//   }
+// );
 const customerSlice = createSlice({
 name:"seller",
 initialState: initialState,
@@ -85,8 +129,13 @@ state.errorMessages = [action.error.message];
   builder.addCase(removeFromCart.fulfilled, (state, action) => {
   state.cart = action.payload;
 });
+builder.addCase(placeOrder.fulfilled, (state, action) => {
+  state.orders.push(action.payload);
+  state.cart = [];
+  });
 }
-});
+})
+
 
 
 export default customerSlice.reducer;

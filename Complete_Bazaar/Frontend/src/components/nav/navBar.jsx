@@ -38,7 +38,7 @@ const NavBar = () => {
               🛒Cart
             </Link>
               <Link
-              to="/oredrs"
+              to="/orders"
               className="rounded-full bg-white px-4 py-2 text-gray-900 shadow-sm transition hover:bg-gray-500"
             >
               🛍️Orders

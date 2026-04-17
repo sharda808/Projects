@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const orderSchema = new mongoose.Schema({
   products:[{type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true}],
   totalAmount: {type:Number, required:true},
-  craetedAt:{type: Date, default: Date.now},
+  createdAt:{type: Date, default: Date.now},
   customer:{type: mongoose.Schema.Types.ObjectId, ref:'User', required: true},
 
 });

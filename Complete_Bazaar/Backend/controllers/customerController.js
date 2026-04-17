@@ -31,7 +31,7 @@ exports.createOrder = async(req,res,next) => {
   for(const product of user.cart) {
     totalAmount += product.price;
   }
-  const order = new Order({products: user.cart, customer: userId});
+  const order = new Order({products: user.cart, totalAmount, customer: userId});
   await order.save();
   user.orders.push(order._id);
   user.cart = [];
