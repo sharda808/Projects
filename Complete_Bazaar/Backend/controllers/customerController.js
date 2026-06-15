@@ -1,6 +1,7 @@
+const order = require("../models/order");
 const Product = require("../models/Product");
 const User = require("../models/User");
-const Order = require("../models/Order");
+
 
 exports. getData = async(req,res,next) => {
   const userId = req.userId;
@@ -31,7 +32,7 @@ exports.createOrder = async(req,res,next) => {
   for(const product of user.cart) {
     totalAmount += product.price;
   }
-  const order = new Order({products: user.cart, totalAmount, customer: userId});
+  const order = new order({products: user.cart, totalAmount, customer: userId});
   await order.save();
   user.orders.push(order._id);
   user.cart = [];

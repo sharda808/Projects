@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { placeOrder } from '../../../store/slices/customerSlice';
+import { useState } from 'react';
 
 const CartSummary = ({products}) => {
-
+const [paymentMethod, setPayementMethod] = useState("cod");
   const dispatch = useDispatch();
 
   let totalPrice = 0;
@@ -47,6 +48,29 @@ const CartSummary = ({products}) => {
       >
         Place Order
       </button>
+      <div className="mb-4">
+  <h3 className="font-semibold mb-2">Select Payment Method</h3>
+
+  <label className="block">
+    <input
+      type="radio"
+      value="cod"
+      checked={paymentMethod === "cod"}
+      onChange={(e) => setPaymentMethod(e.target.value)}
+    />
+    Cash on Delivery
+  </label>
+
+  <label className="block">
+    <input
+      type="radio"
+      value="online"
+      checked={paymentMethod === "online"}
+      onChange={(e) => setPaymentMethod(e.target.value)}
+    />
+    Online Payment
+  </label>
+</div>
     </div>
   )
 }
