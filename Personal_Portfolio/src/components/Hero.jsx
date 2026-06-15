@@ -13,11 +13,11 @@ className="min-h-screen bg-[#0B1120] text-white flex pt-24 overflow-hidden">
   <div className="grid lg:grid-cols-2 gap-16 items-center min-h-[85vh]">
 <div>
   <p className="text-purple-400 text-lg mb-3 font-medium">👋 Hello, I'm</p>
-  <h1 className="text-5xl font-bold leading-tight">SHARDA
+  <h1 className="text-5xl text-purple-300 font-bold leading-tight">SHARDA
 <br />
 <span className="text-purple-500">JHA</span>
   </h1>
-  <h2 className="mt-6 text-2xl text-gray-300  font-semibold">Software developer &
+  <h2 className="mt-6 text-2xl text-gray-300  font-semibold">Aspiring Software Developer &
 <br />
 Problem Solver
   </h2>
@@ -34,7 +34,7 @@ className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 px-7
   <ArrowRight size={18} />
 </a>
 <a
-  href="#contact"
+  href="#Contact"
   className="inline-flex items-center gap-2 border border-purple-400 px-7 py-4 rounded-xl font-semibold hover:bg-purple-500 hover:text-white transition duration-300"
 >
   <span>Contact Me</span>
