@@ -46,12 +46,14 @@ const Projects = () => {
               </h2>
             </div>
 
-            <div className="flex items-center gap-2 cursor-pointer group">
+            <a
+            href="#Projects"
+            className="flex items-center gap-2 cursor-pointer group">
               <h3 className="text-purple-500 font-medium">
                 View All
               </h3>
               <FaArrowRight className="text-purple-500 transition-transform duration-300 group-hover:translate-x-1" />
-            </div>
+            </a>
           </div>
 
           {/* Projects Grid */}

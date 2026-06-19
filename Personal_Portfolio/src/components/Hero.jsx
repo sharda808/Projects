@@ -26,7 +26,10 @@ Problem Solver
   </p>
   <div className="mt-10 flex items-center gap-5">
 <a
-href="#projects"
+ target="_blank"
+          rel="noopener noreferrer"
+href="https://github.com/sharda808/Projects"
+
 className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700 px-7 py-4 rounded-xl font-semibold transition duration-300"
 >
 
