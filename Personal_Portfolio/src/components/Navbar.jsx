@@ -1,5 +1,6 @@
 import { Download } from "lucide-react";
-
+import resume from "../assets/Resume_sharda.pdf";
+import ToggleTheme from "./ToggleTheme";
 const Navbar = () => {
   const navItems = [
     "Home",
@@ -15,12 +16,12 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full z-50 bg-[#050816]/90 backdrop-blur-md border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         
-        {/* Logo */}
+     
         <h1 className="text-3xl font-bold text-purple-500">
           sharda<span className="text-white">.</span>
         </h1>
 
-        {/* Navigation Links */}
+    
         <ul className="hidden md:flex items-center gap-8 text-white font-medium">
           {navItems.map((item) => (
             <li key={item}>
@@ -34,9 +35,9 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Resume Button */}
+     
         <a
-          href="/Sharda_Jha_Resume.pdf"
+          href={resume}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 border border-purple-500 text-purple-400 px-5 py-2 rounded-xl hover:bg-purple-600 hover:text-white transition duration-300"
@@ -44,6 +45,8 @@ const Navbar = () => {
           <Download size={18} />
           Resume
         </a>
+  
+      <ToggleTheme />
       </div>
     </nav>
   );

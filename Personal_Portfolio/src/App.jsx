@@ -1,3 +1,5 @@
+
+
 import About from "./components/About";
 import Achievements from "./components/Achievements";
 import CodingProfile from "./components/CodingProfile";
@@ -8,11 +10,21 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
-
+import { ThemeContext } from "./context/ThemeContext";
+import React, { useContext } from 'react';
+import ToggleTheme from "./components/ToggleTheme";
 function App() {
+  const {theme} = useContext(ThemeContext);
   return (
-    <div className="bg-[#050816] min-h-screen">
-
+  
+  //  <div className="bg-[#050816] min-h-screen">
+<div
+  className={`min-h-screen ${
+    theme === "dark"
+      ? "bg-[#050816] text-white"
+      : "bg-white text-gray-900"
+  }`}
+>
       <Navbar />
 
       {/* HOME */}
@@ -80,3 +92,4 @@ function App() {
 }
 
 export default App;
+

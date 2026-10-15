@@ -15,7 +15,7 @@ return (
     <div className="flex items-center gap-3">
 <FaRegCheckCircle className="text-xl text-purple-50 flex flex-items" />
     <p className="text-gray-300">
-      Solved 500+ DSA problems on various platforms
+      Solved 700+ DSA problems on various platforms
     </p>
    </div>
     <div className="flex items-center gap-3">
